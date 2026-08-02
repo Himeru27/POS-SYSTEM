@@ -476,17 +476,19 @@ tbody tr:hover {
   margin-bottom: 14px;
 }
 
-/* These two buttons sit on the dark catalog panel, so they use
+/* These three buttons sit on the dark catalog panel, so they use
    the same dark navy + blue-accent colors as the category tabs
    instead of the light-card orange used elsewhere. */
 #viewTransactionsBtn,
-#totalSalesBtn {
+#totalSalesBtn,
+#mostPurchasedBtn {
   background-color: #333852;
   color: #D8DAE6;
 }
 
 #viewTransactionsBtn:hover,
-#totalSalesBtn:hover {
+#totalSalesBtn:hover,
+#mostPurchasedBtn:hover {
   background-color: #3E7BFA;
   color: white;
 }

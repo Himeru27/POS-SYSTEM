@@ -358,10 +358,23 @@ checkoutBtn.addEventListener("click", function () {
 
   const amountPaid = parseFloat(amountPaidInput.value);
 
-  if (isNaN(amountPaid) || amountPaid < totalDue) {
-    checkoutMessage.textContent = "Insufficient payment. Please enter at least ₱" + totalDue.toFixed(2) + ".";
-    checkoutMessage.style.color = "#D64550";
-    return;
+  // Loans work differently: the cashier only needs to collect at
+  // least half of the loan amount now, not the full total due.
+  if (checkoutOptionSelect.value === "loan") {
+    const loanAmount = parseFloat(loanAmountInput.value) || 0;
+    const minimumLoanPayment = loanAmount / 2;
+
+    if (isNaN(amountPaid) || amountPaid < minimumLoanPayment) {
+      checkoutMessage.textContent = "For a loan, please pay at least half of the loan amount first (₱" + minimumLoanPayment.toFixed(2) + ").";
+      checkoutMessage.style.color = "#D64550";
+      return;
+    }
+  } else {
+    if (isNaN(amountPaid) || amountPaid < totalDue) {
+      checkoutMessage.textContent = "Insufficient payment. Please enter at least ₱" + totalDue.toFixed(2) + ".";
+      checkoutMessage.style.color = "#D64550";
+      return;
+    }
   }
 
   const change = amountPaid - totalDue;

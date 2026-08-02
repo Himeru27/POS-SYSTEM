@@ -492,7 +492,7 @@ tbody tr:hover {
 }
 
 .report-output {
-  background-color: #333852;
+  background-color:  #FFFDF7;
   border-radius: 10px;
   padding: 12px;
 }
@@ -501,7 +501,7 @@ tbody tr:hover {
    own background is light - so its text needs to stay dark
    instead of the white text used elsewhere in that dark panel. */
 .catalog-panel .report-output table {
-  color: #4A2E1E;
+  color: #333852;
 }
 
 .catalog-panel .report-output th {

@@ -281,7 +281,7 @@ table {
 }
 
 thead tr {
-  background-color: #F2A93B;
+  background-color: #3E7BFA;
 }
 
 th, td {
@@ -292,7 +292,7 @@ th, td {
 }
 
 th {
-  color: #4A2E1E;
+  color: white;
   font-family: 'Baloo 2', sans-serif;
 }
 
@@ -492,24 +492,26 @@ tbody tr:hover {
 }
 
 .report-output {
-  background-color:  #FFFDF7;
+  background-color: #FFFDF7;
   border-radius: 10px;
   padding: 12px;
 }
 
 /* The report table sits inside the dark catalog panel, but its
-   own background is light - so its text needs to stay dark
-   instead of the white text used elsewhere in that dark panel. */
+   own background is light - so its body text needs to stay dark
+   instead of the white text used elsewhere in that dark panel.
+   The header row keeps white text since it sits on the blue
+   header background. */
 .catalog-panel .report-output table {
-  color: #333852;
-}
-
-.catalog-panel .report-output th {
   color: #4A2E1E;
 }
 
+.catalog-panel .report-output th {
+  color: white;
+}
+
 .catalog-panel .report-output thead tr {
-  background-color: #F2A93B;
+  background-color: #3E7BFA;
 }
 
 .catalog-panel .report-output th,
@@ -553,6 +555,18 @@ tbody tr:hover {
   justify-content: center;
   gap: 8px;
   margin-top: 16px;
+}
+
+/* "Save receipt" uses the app's blue accent color instead of the
+   usual orange secondary color. */
+#downloadReceiptBtn {
+  background-color: #3E7BFA;
+  color: white;
+}
+
+#downloadReceiptBtn:hover {
+  background-color: #2C5FD1;
+  color: white;
 }
 
 /* ---- Printing: only the receipt itself should be printed ---- */

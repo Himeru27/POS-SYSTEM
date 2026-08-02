@@ -12,7 +12,7 @@
    transactions, etc. are just normal variables at the top,
    so every function below can read and change them directly.
    ========================================================= */
-import { groceryItems } from "./products.js";
+import { groceryItems, getProductCategory } from "./products.js";
 
 
 /* ---------------------------------------------------------
@@ -107,7 +107,8 @@ function showFilteredProducts() {
   for (let i = 0; i < groceryItems.length; i++) {
     const product = groceryItems[i];
 
-    const matchesCategory = (currentCategory === "All") || (product.product_category === currentCategory);
+    const productCategory = getProductCategory(product.product_id);
+    const matchesCategory = (currentCategory === "All") || (productCategory === currentCategory);
     const matchesSearch = product.product_name.toLowerCase().indexOf(searchText) !== -1;
 
     if (matchesCategory && matchesSearch) {

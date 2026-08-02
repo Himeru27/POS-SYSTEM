@@ -476,10 +476,45 @@ tbody tr:hover {
   margin-bottom: 14px;
 }
 
+/* These two buttons sit on the dark catalog panel, so they use
+   the same dark navy + blue-accent colors as the category tabs
+   instead of the light-card orange used elsewhere. */
+#viewTransactionsBtn,
+#totalSalesBtn {
+  background-color: #333852;
+  color: #D8DAE6;
+}
+
+#viewTransactionsBtn:hover,
+#totalSalesBtn:hover {
+  background-color: #3E7BFA;
+  color: white;
+}
+
 .report-output {
   background-color: #FFFDF7;
   border-radius: 10px;
   padding: 12px;
+}
+
+/* The report table sits inside the dark catalog panel, but its
+   own background is light - so its text needs to stay dark
+   instead of the white text used elsewhere in that dark panel. */
+.catalog-panel .report-output table {
+  color: #4A2E1E;
+}
+
+.catalog-panel .report-output th {
+  color: #4A2E1E;
+}
+
+.catalog-panel .report-output thead tr {
+  background-color: #F2A93B;
+}
+
+.catalog-panel .report-output th,
+.catalog-panel .report-output td {
+  border-bottom: 1px solid #EAD9B8;
 }
 
 /* =========================================================

@@ -1,0 +1,571 @@
+/* =========================================================
+   SARI-SARI STORE POS SYSTEM - STYLES
+   Layout inspired by a real restaurant POS screen: a white
+   "Orders" panel on the left, and a dark product catalog with
+   colorful item cards and category tabs on the right.
+
+   Note: this file uses plain, basic CSS on purpose (direct
+   color values, fixed sizes) instead of newer/advanced CSS
+   features, so it's easy to read and edit.
+   ========================================================= */
+
+/* ---- Basic page setup ---- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: #12141C;
+  color: #4A2E1E;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  color: #4A2E1E;
+  margin-top: 0;
+}
+
+/* =========================================================
+   MAIN POS SCREEN: "Orders" panel (left) + Catalog (right)
+   ========================================================= */
+.app-shell {
+  display: flex;
+  align-items: stretch;
+  max-width: 1100px;
+  min-height: 620px;
+  margin: 20px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* ---- LEFT: Orders panel (the live cart) ---- */
+.orders-panel {
+  background-color: #FFFFFF;
+  width: 340px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+}
+
+.orders-header h1 {
+  font-size: 1.9rem;
+  margin: 0;
+}
+
+.orders-header .store-name {
+  margin: 4px 0 18px;
+  font-size: 0.85rem;
+  color: #8A6D4F;
+}
+
+.orders-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.empty-orders {
+  color: #A99C90;
+  font-size: 0.9rem;
+}
+
+.order-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #F1E9DC;
+}
+
+.order-name {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.order-price {
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.remove-circle {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: none;
+  background-color: #E63946;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-circle:hover {
+  background-color: #C22834;
+}
+
+.orders-footer {
+  border-top: 2px solid #F1E9DC;
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.orders-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4A2E1E;
+  margin-bottom: 6px;
+}
+
+.btn-panel {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 2px solid #4A2E1E;
+  border-radius: 10px;
+  background-color: white;
+  color: #4A2E1E;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-panel:hover {
+  background-color: #AFCBFA;
+  color: #1B2A4A;
+  border-color: #1B2A4A;
+}
+
+/* ---- RIGHT: Product catalog (dark panel) ---- */
+.catalog-panel {
+  flex: 1;
+  background-color: #1E2233;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* allows the grid to shrink properly inside flex */
+}
+
+/* ---- Search box ---- */
+.search-box {
+  width: 100%;
+  margin: 16px 16px 0;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.search-box:focus {
+  outline: 2px solid #3E7BFA;
+}
+
+/* ---- Product catalog table (styled to fit the dark panel) ----
+   This is the part that makes the table scrollable: instead of
+   letting the table grow as tall as it wants (which pushed the
+   category tabs below the screen), we give it a fixed max height
+   and let it scroll on its own inside that space. */
+.catalog-panel .table-wrapper {
+  flex: 1;
+  max-height: 420px;
+  overflow-y: auto;
+  padding: 0 16px;
+}
+
+.catalog-panel table {
+  color: #E4E6EF;
+}
+
+.catalog-panel thead tr {
+  background-color: #262B40;
+}
+
+.catalog-panel th {
+  color: #E4E6EF;
+}
+
+.catalog-panel th,
+.catalog-panel td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.catalog-panel tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.catalog-panel .qty-input {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ---- Category tabs, pinned to the bottom of the catalog panel ---- */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 16px;
+  background-color: #262B40;
+}
+
+.tab-btn {
+  border: 2px solid transparent;
+  background-color: #333852;
+  color: #D8DAE6;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  background-color: #3C4262;
+}
+
+.tab-btn.active {
+  border-color: #3E7BFA;
+  background-color: #3C4262;
+  color: white;
+}
+
+/* =========================================================
+   SHARED CARD / TABLE STYLES
+   (used by the Checkout view and the Sales Report section)
+   ========================================================= */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+}
+
+/* ---- Sales Report section (now inside the dark catalog panel) ---- */
+#report-section {
+  padding: 16px;
+}
+
+#report-section h2 {
+  color: #E4E6EF;
+}
+
+.checkout-wrapper {
+  max-width: 640px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 16px 40px;
+}
+
+/* ---- Tables (used for cart & transactions) ---- */
+.table-wrapper {
+  overflow-x: auto; /* allows horizontal scroll on small screens */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background-color: #F2A93B;
+}
+
+th, td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #EAD9B8;
+  font-size: 0.95rem;
+}
+
+th {
+  color: #4A2E1E;
+  font-family: 'Baloo 2', sans-serif;
+}
+
+tbody tr:hover {
+  background-color: #FFF3D6;
+}
+
+/* Quantity input inside tables */
+.qty-input {
+  width: 60px;
+  padding: 4px 6px;
+  border: 1px solid #EAD9B8;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background-color: #2E7D46;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #235C34;
+}
+
+/* The main Checkout button turns blue on hover instead of the
+   usual darker green used by other primary buttons */
+#checkoutBtn:hover {
+  background-color: #3E7BFA;
+}
+
+.btn-secondary {
+  background-color: #F2A93B;
+  color: #4A2E1E;
+  margin: 4px;
+}
+
+.btn-secondary:hover {
+  background-color: #C97F1D;
+  color: white;
+}
+
+/* "Back to Catalog" is a navigation action, not the primary task on
+   this screen, so it uses a low-emphasis neutral style instead of
+   the same orange as other secondary buttons - this keeps the
+   Checkout button as the clear visual priority. The border keeps it
+   readable as a button even though the fill is subtle, and the
+   darker text/background on hover gives clear, high-contrast
+   feedback that the button was noticed. */
+#backToCatalogBtn {
+  background-color: #EFEFEF;
+  color: #4A2E1E;
+  border: 2px solid #A99C90;
+}
+
+#backToCatalogBtn:hover {
+  background-color: #DCD5C9;
+  color: #4A2E1E;
+  border-color: #8A6D4F;
+}
+
+/* "Add" button in the catalog table - green */
+.btn-add {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #2E7D46;
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #235C34;
+}
+
+/* "Remove" button in the cart table - red */
+.btn-remove {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #E63946;
+  color: white;
+}
+
+.btn-remove:hover {
+  background-color: #C22834;
+}
+
+/* ---- Cart total ---- */
+.cart-total {
+  color: #E63946;
+  font-size: 1.4rem;
+  margin-top: 14px;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #8A6D4F;
+  margin-top: 4px;
+}
+
+.orders-footer .hint {
+  color: #A99C90;
+}
+
+/* ---- Checkout form ---- */
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.form-row label {
+  font-weight: 600;
+  min-width: 180px;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  min-width: 160px;
+  padding: 8px 10px;
+  border: 2px solid #EAD9B8;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #C97F1D;
+}
+
+#checkoutMessage {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* ---- Receipt box: styled like a printed paper receipt ---- */
+.receipt-box {
+  background-color: #FFFDF7;
+  border: 1px dashed #C97F1D;
+  border-radius: 10px;
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  color: #4A2E1E;
+}
+
+.receipt-box table {
+  margin: 10px 0;
+}
+
+/* ---- Reports ---- */
+.report-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.report-output {
+  background-color: #FFFDF7;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+/* =========================================================
+   RECEIPT POPUP (MODAL)
+   Hidden by default. script.js switches this to display:flex
+   right after a transaction is completed.
+   ========================================================= */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 16px;
+}
+
+.modal-box {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* ---- Printing: only the receipt itself should be printed ---- */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #receiptModalBox, #receiptModalBox * {
+    visibility: visible;
+  }
+
+  #receiptModalBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .modal-buttons {
+    display: none;
+  }
+}
+
+/* ---- Responsive tweaks for small phone/tablet screens ---- */
+@media (max-width: 760px) {
+  .app-shell {
+    flex-direction: column;
+    min-height: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .orders-panel {
+    width: 100%;
+  }
+
+  .catalog-panel .table-wrapper {
+    max-height: 320px;
+  }
+
+  .product-grid {
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row label {
+    min-width: 100%;
+  }
+}

@@ -60,6 +60,7 @@ const receiptModal = document.getElementById("receiptModal");
 // Sales report
 const viewTransactionsBtn = document.getElementById("viewTransactionsBtn");
 const totalSalesBtn = document.getElementById("totalSalesBtn");
+const mostPurchasedBtn = document.getElementById("mostPurchasedBtn");
 const reportOutput = document.getElementById("reportOutput");
 
 
@@ -476,6 +477,54 @@ totalSalesBtn.addEventListener("click", function () {
   }
 
   reportOutput.innerHTML = "<h3>Total Sales Today: ₱" + totalSales.toFixed(2) + "</h3>";
+});
+
+mostPurchasedBtn.addEventListener("click", function () {
+  if (transactions.length === 0) {
+    reportOutput.innerHTML = "<p>No transactions recorded yet.</p>";
+    return;
+  }
+
+  // Build a simple list that adds up how many of each product
+  // has been sold across every transaction so far.
+  const productTotals = [];
+
+  for (let i = 0; i < transactions.length; i++) {
+    const items = transactions[i].items;
+
+    for (let j = 0; j < items.length; j++) {
+      const item = items[j];
+
+      // Check if we're already tallying this product
+      let existing = null;
+      for (let k = 0; k < productTotals.length; k++) {
+        if (productTotals[k].product_name === item.product_name) {
+          existing = productTotals[k];
+        }
+      }
+
+      if (existing) {
+        existing.totalQuantity = existing.totalQuantity + item.quantity;
+      } else {
+        productTotals.push({
+          product_name: item.product_name,
+          totalQuantity: item.quantity
+        });
+      }
+    }
+  }
+
+  // Find the product with the highest total quantity sold
+  let topProduct = productTotals[0];
+  for (let i = 1; i < productTotals.length; i++) {
+    if (productTotals[i].totalQuantity > topProduct.totalQuantity) {
+      topProduct = productTotals[i];
+    }
+  }
+
+  reportOutput.innerHTML =
+    "<h3>Most Purchased Product</h3>" +
+    "<p>" + topProduct.product_name + " - " + topProduct.totalQuantity + " sold</p>";
 });
 
 

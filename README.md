@@ -1,7 +1,7 @@
 # POS-SYSTEM
 
-- Features Include -
+- Features Include 
 
-**- MS Modules
-**- Conditional Statements
-**- Loops
+- MS Modules
+- Conditional Statements
+- Loops

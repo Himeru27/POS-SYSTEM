@@ -1,44 +1,31 @@
-/* =========================================================
-   SCRIPT.JS - MAIN APP FILE (ES module)
-   This one file has everything the POS needs: the product
-   catalog (sort/filter), the cart, checkout, checkout options
-   (Senior Citizen/PWD + Loan), and the sales report.
 
-   Product data comes from products.js (imported below).
-   Receipt.js is a plain (non-module) script that sets up
-   window.showReceipt, which this file calls after checkout.
-
-   Everything lives in one file on purpose - the cart,
-   transactions, etc. are just normal variables at the top,
-   so every function below can read and change them directly.
-   ========================================================= */
 import { groceryItems, getProductCategory } from "./products.js";
 
 
 /* ---------------------------------------------------------
-   1. APP STATE
+   1. APP STATE | Para sa products.js
 --------------------------------------------------------- */
-let cart = [];                 // items added for the current customer
-let transactions = [];         // every completed sale this session
-let transactionCounter = 1;    // unique ID for the next transaction
-let currentCategory = "All";   // which category tab is selected
+let cart = [];           
+let transactions = [];        
+let transactionCounter = 1; 
+let currentCategory = "All";
 
 
 /* ---------------------------------------------------------
-   2. HTML ELEMENT REFERENCES
+   2. HTML ELEMENT REFERENCES | Para sa index.html
 --------------------------------------------------------- */
-// Catalog view
+
 const searchBox = document.getElementById("searchBox");
 const productTableBody = document.getElementById("productTableBody");
 const ordersList = document.getElementById("ordersList");
 const catalogCartTotalEl = document.getElementById("catalogCartTotal");
 const proceedToCheckoutBtn = document.getElementById("proceedToCheckoutBtn");
 
-// Catalog <-> Checkout views
+
 const catalogView = document.getElementById("catalogView");
 const checkoutView = document.getElementById("checkoutView");
 
-// Checkout view
+
 const backToCatalogBtn = document.getElementById("backToCatalogBtn");
 const cartTableBody = document.getElementById("cartTableBody");
 const cartTotalSpan = document.getElementById("cartTotal");

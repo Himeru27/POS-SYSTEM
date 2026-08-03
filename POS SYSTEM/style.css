@@ -1,15 +1,4 @@
-/* =========================================================
-   SARI-SARI STORE POS SYSTEM - STYLES
-   Layout inspired by a real restaurant POS screen: a white
-   "Orders" panel on the left, and a dark product catalog with
-   colorful item cards and category tabs on the right.
 
-   Note: this file uses plain, basic CSS on purpose (direct
-   color values, fixed sizes) instead of newer/advanced CSS
-   features, so it's easy to read and edit.
-   ========================================================= */
-
-/* ---- Basic page setup ---- */
 * {
   box-sizing: border-box;
 }
@@ -28,9 +17,6 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
-/* =========================================================
-   MAIN POS SCREEN: "Orders" panel (left) + Catalog (right)
-   ========================================================= */
 .app-shell {
   display: flex;
   align-items: stretch;
@@ -42,7 +28,6 @@ h1, h2, h3 {
   box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
 }
 
-/* ---- LEFT: Orders panel (the live cart) ---- */
 .orders-panel {
   background-color: #FFFFFF;
   width: 340px;
@@ -148,7 +133,6 @@ h1, h2, h3 {
   border-color: #1B2A4A;
 }
 
-/* ---- RIGHT: Product catalog (dark panel) ---- */
 .catalog-panel {
   flex: 1;
   background-color: #1E2233;
@@ -157,7 +141,6 @@ h1, h2, h3 {
   min-width: 0; /* allows the grid to shrink properly inside flex */
 }
 
-/* ---- Search box ---- */
 .search-box {
   width: 100%;
   margin: 16px 16px 0;
@@ -172,11 +155,6 @@ h1, h2, h3 {
   outline: 2px solid #3E7BFA;
 }
 
-/* ---- Product catalog table (styled to fit the dark panel) ----
-   This is the part that makes the table scrollable: instead of
-   letting the table grow as tall as it wants (which pushed the
-   category tabs below the screen), we give it a fixed max height
-   and let it scroll on its own inside that space. */
 .catalog-panel .table-wrapper {
   flex: 1;
   max-height: 420px;
@@ -209,7 +187,6 @@ h1, h2, h3 {
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* ---- Category tabs, pinned to the bottom of the catalog panel ---- */
 .category-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -241,10 +218,7 @@ h1, h2, h3 {
   color: white;
 }
 
-/* =========================================================
-   SHARED CARD / TABLE STYLES
-   (used by the Checkout view and the Sales Report section)
-   ========================================================= */
+
 .card {
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -252,7 +226,6 @@ h1, h2, h3 {
   padding: 20px;
 }
 
-/* ---- Sales Report section (now inside the dark catalog panel) ---- */
 #report-section {
   padding: 16px;
 }
@@ -270,9 +243,8 @@ h1, h2, h3 {
   padding: 0 16px 40px;
 }
 
-/* ---- Tables (used for cart & transactions) ---- */
 .table-wrapper {
-  overflow-x: auto; /* allows horizontal scroll on small screens */
+  overflow-x: auto; 
 }
 
 table {
@@ -300,7 +272,6 @@ tbody tr:hover {
   background-color: #FFF3D6;
 }
 
-/* Quantity input inside tables */
 .qty-input {
   width: 60px;
   padding: 4px 6px;
@@ -309,7 +280,6 @@ tbody tr:hover {
   font-family: inherit;
 }
 
-/* ---- Buttons ---- */
 .btn {
   border: none;
   border-radius: 10px;
@@ -333,8 +303,6 @@ tbody tr:hover {
   background-color: #235C34;
 }
 
-/* The main Checkout button turns blue on hover instead of the
-   usual darker green used by other primary buttons */
 #checkoutBtn:hover {
   background-color: #3E7BFA;
 }
@@ -350,13 +318,6 @@ tbody tr:hover {
   color: white;
 }
 
-/* "Back to Catalog" is a navigation action, not the primary task on
-   this screen, so it uses a low-emphasis neutral style instead of
-   the same orange as other secondary buttons - this keeps the
-   Checkout button as the clear visual priority. The border keeps it
-   readable as a button even though the fill is subtle, and the
-   darker text/background on hover gives clear, high-contrast
-   feedback that the button was noticed. */
 #backToCatalogBtn {
   background-color: #EFEFEF;
   color: #4A2E1E;
@@ -369,7 +330,6 @@ tbody tr:hover {
   border-color: #8A6D4F;
 }
 
-/* "Add" button in the catalog table - green */
 .btn-add {
   border: none;
   border-radius: 6px;
@@ -385,7 +345,6 @@ tbody tr:hover {
   background-color: #235C34;
 }
 
-/* "Remove" button in the cart table - red */
 .btn-remove {
   border: none;
   border-radius: 6px;
@@ -401,7 +360,6 @@ tbody tr:hover {
   background-color: #C22834;
 }
 
-/* ---- Cart total ---- */
 .cart-total {
   color: #E63946;
   font-size: 1.4rem;
@@ -418,7 +376,6 @@ tbody tr:hover {
   color: #A99C90;
 }
 
-/* ---- Checkout form ---- */
 .form-row {
   display: flex;
   align-items: center;
@@ -454,7 +411,6 @@ tbody tr:hover {
   margin-top: 10px;
 }
 
-/* ---- Receipt box: styled like a printed paper receipt ---- */
 .receipt-box {
   background-color: #FFFDF7;
   border: 1px dashed #C97F1D;
@@ -468,7 +424,6 @@ tbody tr:hover {
   margin: 10px 0;
 }
 
-/* ---- Reports ---- */
 .report-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -476,9 +431,6 @@ tbody tr:hover {
   margin-bottom: 14px;
 }
 
-/* These three buttons sit on the dark catalog panel, so they use
-   the same dark navy + blue-accent colors as the category tabs
-   instead of the light-card orange used elsewhere. */
 #viewTransactionsBtn,
 #totalSalesBtn,
 #mostPurchasedBtn {
@@ -499,11 +451,6 @@ tbody tr:hover {
   padding: 12px;
 }
 
-/* The report table sits inside the dark catalog panel, but its
-   own background is light - so its body text needs to stay dark
-   instead of the white text used elsewhere in that dark panel.
-   The header row keeps white text since it sits on the blue
-   header background. */
 .catalog-panel .report-output table {
   color: #4A2E1E;
 }
@@ -521,11 +468,6 @@ tbody tr:hover {
   border-bottom: 1px solid #EAD9B8;
 }
 
-/* =========================================================
-   RECEIPT POPUP (MODAL)
-   Hidden by default. script.js switches this to display:flex
-   right after a transaction is completed.
-   ========================================================= */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -559,8 +501,6 @@ tbody tr:hover {
   margin-top: 16px;
 }
 
-/* "Save receipt" uses the app's blue accent color instead of the
-   usual orange secondary color. */
 #downloadReceiptBtn {
   background-color: #3E7BFA;
   color: white;
@@ -571,7 +511,6 @@ tbody tr:hover {
   color: white;
 }
 
-/* ---- Printing: only the receipt itself should be printed ---- */
 @media print {
   body * {
     visibility: hidden;
@@ -594,7 +533,6 @@ tbody tr:hover {
   }
 }
 
-/* ---- Responsive tweaks for small phone/tablet screens ---- */
 @media (max-width: 760px) {
   .app-shell {
     flex-direction: column;
